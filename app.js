@@ -8,6 +8,14 @@ let data = require("./mockData")
 
 const app = express()
 
+const corsOptions = {
+  origin: function(origin, callback) {
+    callback(null, true)
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan("dev"))
